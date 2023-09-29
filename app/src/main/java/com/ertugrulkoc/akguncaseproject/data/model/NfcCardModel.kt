@@ -1,4 +1,4 @@
-package com.ertugrulkoc.akguncaseproject.model
+package com.ertugrulkoc.akguncaseproject.data.model
 
 data class NfcCardModel(
     var uid: String? = "")

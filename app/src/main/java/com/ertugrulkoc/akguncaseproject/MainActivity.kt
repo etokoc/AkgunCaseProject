@@ -7,16 +7,20 @@ import android.provider.Settings
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.ertugrulkoc.akguncaseproject.data.adapter.CardsAdapter
 import com.ertugrulkoc.akguncaseproject.databinding.ActivityMainBinding
 import com.ertugrulkoc.akguncaseproject.databinding.BottomDialogBinding
 import com.ertugrulkoc.akguncaseproject.util.SharedPrefencesUtil
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.button.MaterialButton
+import java.util.ArrayList
 
 class MainActivity : AppCompatActivity() {
     private lateinit var _binding: ActivityMainBinding
     private lateinit var customNfcManager: CustomNfcManager
     private lateinit var sharedPrefencesUtil: SharedPrefencesUtil
+    private lateinit var cardsAdapter: CardsAdapter
     private val binding
         get() = _binding
 
@@ -26,6 +30,22 @@ class MainActivity : AppCompatActivity() {
         setContentView(_binding.root)
         sharedPrefencesUtil = SharedPrefencesUtil(this)
         customNfcManager = CustomNfcManager(this)
+        initRecyclerView()
+    }
+
+    private fun initRecyclerView() {
+        cardsAdapter = CardsAdapter()
+        binding.recyclerviewCard.adapter = cardsAdapter
+        binding.recyclerviewCard.layoutManager = LinearLayoutManager(this)
+        updateRecylerView()
+    }
+
+    private fun updateRecylerView() {
+        cardsAdapter.setCardList(
+            ArrayList<String>(
+                sharedPrefencesUtil.getCardsFromLocal().toList()
+            )
+        )
     }
 
     /**
@@ -111,6 +131,8 @@ class MainActivity : AppCompatActivity() {
             dialog.findViewById<MaterialButton>(R.id.btnCardSaved)?.setOnClickListener {
                 //Card Save Button Listener
                 sharedPrefencesUtil.addCard(uid.toString())
+                updateRecylerView()
+                dialog.dismiss()
             }
         }
     }

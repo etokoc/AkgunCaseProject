@@ -5,7 +5,7 @@ import android.app.PendingIntent
 import android.content.Intent
 import android.nfc.NfcAdapter
 import android.nfc.Tag
-import com.ertugrulkoc.akguncaseproject.model.NfcCardModel
+import com.ertugrulkoc.akguncaseproject.data.model.NfcCardModel
 
 class CustomNfcManager(private var activity: Activity) {
 
