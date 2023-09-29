@@ -4,7 +4,16 @@
 
   
 <h2>📸ScreenShots</h2>
-![pic2](https://github.com/etokoc/AkgunCaseProject/assets/49747450/21c98d29-f18c-4944-b43c-ab71eb9fed3a)
+<img
+  src="https://github.com/etokoc/AkgunCaseProject/assets/49747450/aef2b50b-d52b-453c-b032-98d1ef58a12f"
+  alt="Alt text"
+  title="Optional title"
+  style="display: block; margin: 0 auto; width: 300px; height: 600px;">
+  <img
+  src="https://github.com/etokoc/AkgunCaseProject/assets/49747450/476468f1-cd0c-4d4d-b566-9233af0ffefe"
+  alt="Alt text"
+  title="Optional title"
+  style="display: block; margin: 0 auto; width: 300px; height: 600px;">
 
 <h2>🧐 Features</h2>
 
@@ -15,7 +24,7 @@ Here're some of the project's best features:
 *   Check the nfc status of device
 *   Card save to locale
 
-  
+
   
 <h2>💻 Built with</h2>
 
