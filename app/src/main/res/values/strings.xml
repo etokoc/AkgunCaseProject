@@ -3,4 +3,7 @@
     <string name="warning">Warning</string>
     <string name="nfc_isn_t_enable_please_check_your_nfc_settings">Nfc isn\'t enable. Please check your Nfc settings.</string>
     <string name="this_device_not_supported_nfc_technology">This Device Not Supported NFC Technology</string>
+    <string name="save_card">Save card</string>
+    <string name="card_id">Card ID</string>
+    <string name="card_saved_panel">Card Save Panel</string>
 </resources>
