@@ -6,4 +6,6 @@
     <string name="save_card">Save card</string>
     <string name="card_id">Card ID</string>
     <string name="card_saved_panel">Card Save Panel</string>
+    <string name="nfc_card_reader">NFC Card Reader</string>
+    <string name="scan_your_card">Scan Your Card</string>
 </resources>
