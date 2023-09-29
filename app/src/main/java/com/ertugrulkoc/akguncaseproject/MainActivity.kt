@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.ertugrulkoc.akguncaseproject.data.adapter.CardsAdapter
 import com.ertugrulkoc.akguncaseproject.databinding.ActivityMainBinding
 import com.ertugrulkoc.akguncaseproject.databinding.BottomDialogBinding
+import com.ertugrulkoc.akguncaseproject.util.CustomNfcManager
 import com.ertugrulkoc.akguncaseproject.util.SharedPrefencesUtil
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.button.MaterialButton

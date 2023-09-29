@@ -1,4 +1,4 @@
-package com.ertugrulkoc.akguncaseproject
+package com.ertugrulkoc.akguncaseproject.util
 
 import android.app.Activity
 import android.app.PendingIntent
