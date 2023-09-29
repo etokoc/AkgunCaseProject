@@ -4,13 +4,19 @@ import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
 import android.provider.Settings
+import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.ertugrulkoc.akguncaseproject.databinding.ActivityMainBinding
+import com.ertugrulkoc.akguncaseproject.databinding.BottomDialogBinding
+import com.ertugrulkoc.akguncaseproject.util.SharedPrefencesUtil
+import com.google.android.material.bottomsheet.BottomSheetDialog
+import com.google.android.material.button.MaterialButton
 
 class MainActivity : AppCompatActivity() {
     private lateinit var _binding: ActivityMainBinding
     private lateinit var customNfcManager: CustomNfcManager
+    private lateinit var sharedPrefencesUtil: SharedPrefencesUtil
     private val binding
         get() = _binding
 
@@ -18,6 +24,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         _binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(_binding.root)
+        sharedPrefencesUtil = SharedPrefencesUtil(this)
         customNfcManager = CustomNfcManager(this)
     }
 
@@ -40,6 +47,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    //Device Supported Control
     private fun openDeviceNotSupportedWindow() {
         AlertDialog.Builder(this)
             .setMessage(getString(R.string.this_device_not_supported_nfc_technology))
@@ -84,7 +92,25 @@ class MainActivity : AppCompatActivity() {
         super.onNewIntent(intent)
         if (this::customNfcManager.isInitialized) {
             customNfcManager.readNfcTag(intent) { manager ->
-                binding.textview.text = manager.uid
+                cardSavedToLocal(manager.uid)
+            }
+        }
+    }
+
+    private fun cardSavedToLocal(uid: String?) {
+        if (sharedPrefencesUtil.isCardSaved(uid.toString())) {
+            //Card is already exist
+            AlertDialog.Builder(this).setTitle(getString(R.string.warning))
+                .setMessage("This card already exist").show()
+        } else {
+            //Card isn't exists in local
+            val dialog = BottomSheetDialog(this)
+            dialog.setContentView(BottomDialogBinding.inflate(layoutInflater).root)
+            dialog.findViewById<TextView>(R.id.txtCardId)?.text = uid
+            dialog.show()
+            dialog.findViewById<MaterialButton>(R.id.btnCardSaved)?.setOnClickListener {
+                //Card Save Button Listener
+                sharedPrefencesUtil.addCard(uid.toString())
             }
         }
     }

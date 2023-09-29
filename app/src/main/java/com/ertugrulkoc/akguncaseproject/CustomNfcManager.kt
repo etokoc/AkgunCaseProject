@@ -34,9 +34,6 @@ class CustomNfcManager(private var activity: Activity) {
             val tag = intent.getParcelableExtra<Tag>(NfcAdapter.EXTRA_TAG)
             tag?.apply {
                 nfcCardModel.uid = bytesToHexString(id)
-                techList.forEach {
-                    nfcCardModel.usedTechList.add(it)
-                }
                 result(nfcCardModel)
             }
         }
